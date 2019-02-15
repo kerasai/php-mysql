@@ -160,6 +160,20 @@ class Connection {
   }
 
   /**
+   * Gets placeholders for a query.
+   *
+   * @param array $values
+   *   An array of values.
+   *
+   * @return string
+   *   A string of placeholders for the values.
+   */
+  public function getPlaceholders(array $values) {
+    $placeholders = array_fill(0, count($values), '?');
+    return implode(' , ', $placeholders);
+  }
+
+  /**
    * Transform query into a prepared statement.
    *
    * @param string $query
@@ -188,5 +202,7 @@ class Connection {
   protected function prefixQuery($query) {
     return strtr($query, ['{' => $this->prefix, '}' => '']);
   }
+
+
 
 }
