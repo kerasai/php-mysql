@@ -1,0 +1,26 @@
+{
+    "name": "kerasai/mysql",
+    "type": "library",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Kerasai\\MySql\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kerasai\\MySql\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "drupal/coder": "^8.3",
+        "consolidation/robo": "^1.4",
+        "kerasai/robo-phpcs": "^0.0.2",
+        "phpunit/phpunit": "^6.5"
+    },
+    "config": {
+        "platform": {
+            "php": "7.0"
+        }
+    }
+}

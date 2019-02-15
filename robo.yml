@@ -1,0 +1,7 @@
+phpcs:
+  path: vendor/bin/phpcs
+  files:
+    src:
+      standard: vendor/drupal/coder/coder_sniffer/Drupal
+    tests:
+      standard: vendor/drupal/coder/coder_sniffer/Drupal
