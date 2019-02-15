@@ -108,7 +108,7 @@ class Connection {
    * @return array
    *   All rows of data for the query.
    */
-  public function getRows($query, array $params = NULL) {
+  public function getRows($query, array $params = []) {
     $result = $this->execute($query, $params);
     return $result->fetchAll();
   }
@@ -124,7 +124,7 @@ class Connection {
    * @return array
    *   A column of data.
    */
-  public function getCol($query, array $params = NULL) {
+  public function getCol($query, array $params = []) {
     $result = $this->execute($query, $params);
     $col = array();
     while ($val = $result->fetchColumn()) {
@@ -169,11 +169,24 @@ class Connection {
    *   The prepared statement.
    */
   protected function prepare($query) {
-    // Perform normalization of $query if needed.
+    $query = $this->prefixQuery($query);
     if (!isset($this->stmts[$query])) {
       $this->stmts[$query] = $this->pdo->prepare($query);
     }
     return $this->stmts[$query];
+  }
+
+  /**
+   * Prefix the query tables.
+   *
+   * @param string $query
+   *   The query.
+   *
+   * @return string
+   *   The query with tables prefixed.
+   */
+  protected function prefixQuery($query) {
+    return strtr($query, ['{' => $this->prefix, '}' => '']);
   }
 
 }

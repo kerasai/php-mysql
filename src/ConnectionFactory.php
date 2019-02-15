@@ -26,6 +26,9 @@ class ConnectionFactory {
    * @param string $name
    *   The name of the connection.
    *
+   * @return \Kerasai\MySql\Connection
+   *   The connection.
+   *
    * @throws \Exception
    */
   public function getConnection($name) {
