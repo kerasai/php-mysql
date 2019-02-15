@@ -203,6 +203,4 @@ class Connection {
     return strtr($query, ['{' => $this->prefix, '}' => '']);
   }
 
-
-
 }
