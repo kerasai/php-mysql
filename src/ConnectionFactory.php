@@ -30,7 +30,7 @@ class ConnectionFactory {
    */
   public function getConnection($name) {
     if (empty($this->connections[$name])) {
-
+      $this->connections[$name] = new Connection($this->getConfig($name));
     }
     return $this->connections[$name];
   }
